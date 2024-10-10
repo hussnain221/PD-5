@@ -2,7 +2,7 @@
 #include<conio.h>
 #include<windows.h>
 using namespace std;
-void header();
+int header();
 int menu();
 
 main()
@@ -12,7 +12,11 @@ main()
   float deposit;
   float withdraw;
   float balance=0;
-  header();
+  int pass=header();
+  if(pass==0)
+  {
+   return 0;
+  }
 
 while(true)
  {
@@ -41,13 +45,15 @@ while(true)
 
   if(option==4)
   {
+    cout<<".......EXITTED......."<<endl;
     return 0;
   }
 
-  else
+  if(option!=1 && option!=2 && option!=3 && option!=4)
   {
     cout<<"Enter Valid Option.... ";
   }
+
   cout<<endl;
   cout<<"Press Any Key To Continue...";
   getch();
@@ -55,7 +61,7 @@ while(true)
  }
 }
 
-void header()
+int header()
 {
 cout<<endl;
 cout<<"*************************************************************************************************************************************";
@@ -64,12 +70,24 @@ cout<<"|%|                                                BANK MANAGEMENT SYSTEM
 cout<<"|%|-------------------------------------------------------------------------------------------------------------------------------|%|";
 cout<<"*************************************************************************************************************************************";
 cout<<endl<<endl;
- string name;
+ string name,password;
   cout<<"Enter your Name: ";
   cin>>name;
+  cout<<"Enter Password: ";
+  cin>>password;
+  
+  if(password=="****")
+  {
   cout<<endl<<"<<----WELCOME! "<<name<<"---->>"<<endl<<endl;
-  Sleep(500);
   cout<<"-------------------------------------------------------------------------------------------------------------------------------------";
+  }
+
+  else
+  {
+  cout<<"Incorrect Password.";
+  return 0;
+  }
+
 }
 
 int menu()
